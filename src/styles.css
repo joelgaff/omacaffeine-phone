@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --color-bg: #191a28;
+  --color-fg: #d5d7ee;
+  --color-muted: #8d90ad;
+  --color-dim: #6e7192;
+  --color-accent: #8ea2f6;
+  --color-accent-dim: #2c3358;
+  --color-urgent: #f07184;
+  --color-line: #343654;
+  --color-card: #222438;
+  --color-coffee: #6b4630;
+  --color-crema: #c99d6c;
+  --color-foam: #f3e6d6;
+}
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  html {
+    color-scheme: dark;
+    background: var(--color-bg);
+  }
+
+  body {
+    margin: 0;
+    min-height: 100dvh;
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  input {
+    font: inherit;
+    font-size: 1rem;
+  }
+}
+
+@utility section-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+@utility icon-btn {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  border-radius: 0.75rem;
+  color: var(--color-fg);
+}
+
+@utility tile {
+  display: flex;
+  min-width: 0;
+  min-height: 4.75rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+  border-radius: 0.7rem;
+  border: 1px solid var(--color-line);
+  background: var(--color-card);
+  padding: 0.4rem 0.25rem;
+  text-align: center;
+  line-height: 1.2;
+}
+
+@utility field {
+  height: 2.75rem;
+  border-radius: 0.7rem;
+  border: 1px solid var(--color-line);
+  background: var(--color-card);
+  padding: 0 0.75rem;
+  color: var(--color-fg);
+}
+
+@utility safe-top {
+  padding-top: env(safe-area-inset-top);
+}
+
+@utility safe-bottom {
+  padding-bottom: max(2.5rem, env(safe-area-inset-bottom));
+}
+
+@keyframes steam-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  30% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+}
+
+.steam {
+  transform-origin: center;
+  animation: steam-rise 2.8s ease-in infinite;
+}
+
+.steam-late {
+  animation-delay: 0.6s;
+}
+
+.steam-later {
+  animation-delay: 1.2s;
+}
+
+.chart-label {
+  font-size: 0.7rem;
+  font-family: var(--font-sans);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .steam {
+    animation: none;
+    opacity: 0.45;
+  }
+}
